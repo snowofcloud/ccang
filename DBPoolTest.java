@@ -25,6 +25,10 @@ public class DBPoolTest {
             Thread thread = new Thread(new Worker(count,got,notGot),"worker_" + i);
             thread.start();
         }
+        end.await();//main再此等待
+        System.out.println("总共尝试了：" + (threadCount * count));
+        System.out.println("拿到连接的次数：" + got);
+        System.out.println("未拿到连接的次数：" + notGot);
 
 
     }
